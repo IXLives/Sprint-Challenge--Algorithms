@@ -99,8 +99,6 @@ class SortingRobot:
 # If at the beginning of the list and not holding an item, pick up the item and move right
 # If item is larger than item at new position and can move right, move right elif item is larger and can move right, swap items and turn on light and move right
 # Elif item at position is larger and CAN NOT MOVE RIGHT you are at the end of the list and the list is sorted Turn off the light
-#
-#
 
     def sort(self):
         """
@@ -108,7 +106,8 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
-        if self.light_is_on() == True:
+        while self.light_is_on() == True:
+            self.set_light_off()
             if self.compare_item() == None:
                 self.swap_item()
             if self.can_move_left() == False:
