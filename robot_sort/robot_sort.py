@@ -98,7 +98,7 @@ class SortingRobot:
 # If the light is on, start swapping
 # If at the beginning of the list and not holding an item, pick up the item and move right
 # If item is larger than item at new position and can move right, move right elif item is larger and can move right, swap items and turn on light and move right
-# Elif item at position is larger and CAN NOT MOVE RIGHT you are at the end of the list and the list is sorted Turn of the light
+# Elif item at position is larger and CAN NOT MOVE RIGHT you are at the end of the list and the list is sorted Turn off the light
 #
 #
 
@@ -108,20 +108,24 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
-        if self.light_is_on() == True:
-            if self.can_move_left() == False:
-                self.swap_item()
-                self.move_right()
-            if self.compare_item() == None:
-                self.swap_item()
-            elif self.compare_item() == 1 and self.can_move_right() == True:
-                self.move_right()
-            elif self.compare_item() == -1 and self.can_move_right() == True:
-                self.swap_item()
-                self.move_right()
-                self.set_light_on()
-            elif self.compare_item() == 1 and self.can_move_right() == False:
-                self.set_light_off()
+        while self.can_move_right() == True:
+            if self.light_is_on() == True:
+                while self.can_move_left() == True:
+                    self.move_left()
+                if self.compare_item() == None:
+                    self.swap_item()
+                if self.can_move_left() == False:
+                    self.swap_item()
+                    self.move_right()
+
+                elif self.compare_item() == 1 and self.can_move_right() == True:
+                    self.move_right()
+                elif self.compare_item() == -1 and self.can_move_right() == True:
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_on()
+                elif self.compare_item() == 0 and self.can_move_right() == False:
+                    self.set_light_off()
         else:
             pass
 
