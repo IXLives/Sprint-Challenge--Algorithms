@@ -8,7 +8,7 @@ Your function must utilize recursion. It cannot contain any loops.
 # is this ok?
 
 
-def count_th(word, count=0):
+def wrong_count_th(word, count=0):
     th = 'th'
     location = word.find(th)
     if location == -1:
@@ -16,3 +16,14 @@ def count_th(word, count=0):
     else:
         count += 1
     return count_th(word[location + 1:], count)
+
+# second pass
+
+
+def count_th(word):
+    th = 'th'
+    location = word.find(th)
+    if location == -1:
+        return 0
+    else:
+        return 1 + count_th(word[location + 1:])
