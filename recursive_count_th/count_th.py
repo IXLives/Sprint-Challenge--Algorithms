@@ -4,8 +4,11 @@ Your function should return a count of how many occurences of ***"th"*** occur w
 Your function must utilize recursion. It cannot contain any loops.
 '''
 
+# my first pass. modified the arguments
+# is this ok?
 
-def count_th(word, count = 0):
+
+def count_th(word, count=0):
     th = 'th'
     location = word.find(th)
     if location == -1:
