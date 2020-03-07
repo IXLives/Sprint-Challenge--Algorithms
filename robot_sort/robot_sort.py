@@ -108,24 +108,23 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
-        while self.can_move_right() == True:
-            if self.light_is_on() == True:
-                while self.can_move_left() == True:
-                    self.move_left()
-                if self.compare_item() == None:
-                    self.swap_item()
-                if self.can_move_left() == False:
-                    self.swap_item()
-                    self.move_right()
+        if self.light_is_on() == True:
+            while self.can_move_left() == True:
+                self.move_left()
+            if self.compare_item() == None:
+                self.swap_item()
+            if self.can_move_left() == False:
+                self.swap_item()
+                self.move_right()
 
-                elif self.compare_item() == 1 and self.can_move_right() == True:
-                    self.move_right()
-                elif self.compare_item() == -1 and self.can_move_right() == True:
-                    self.swap_item()
-                    self.move_right()
-                    self.set_light_on()
-                elif self.compare_item() == 0 and self.can_move_right() == False:
-                    self.set_light_off()
+            elif self.compare_item() == 1 and self.can_move_right() == True:
+                self.move_right()
+            elif self.compare_item() == -1 and self.can_move_right() == True:
+                self.swap_item()
+                self.move_right()
+                self.set_light_on()
+            elif self.compare_item() == 0 and self.can_move_right() == False:
+                self.set_light_off()
         else:
             pass
 
