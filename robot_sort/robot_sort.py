@@ -108,17 +108,19 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
-        if self.light_is_on == True:
-            if self.can_move_left == False and (self.compare_item() == None or -1):
+        if self.light_is_on() == True:
+            if self.can_move_left() == False:
                 self.swap_item()
                 self.move_right()
+            if self.compare_item() == None:
+                self.swap_item()
             if self.compare_item() == 1 and self.can_move_right() == True:
                 self.move_right()
-            elif self.compare_item() == -1 and self.can_move_right == True:
+            elif self.compare_item() == -1 and self.can_move_right() == True:
                 self.swap_item()
                 self.move_right()
                 self.set_light_on()
-            elif self.compare_item() == 1 and self.can_move_right == False:
+            elif self.compare_item() == 1 and self.can_move_right() == False:
                 self.set_light_off()
         else:
             pass
