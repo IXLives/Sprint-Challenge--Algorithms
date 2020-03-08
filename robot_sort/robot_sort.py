@@ -108,24 +108,37 @@ class SortingRobot:
         self.set_light_on()
         while self.light_is_on() == True:
             self.set_light_off()
-            if self.compare_item() == None:
-                self.swap_item()
-            if self.can_move_left() == False:
-                self.swap_item()
+            self.swap_item()
+            # if self.compare_item() == None:
+            while self.can_move_right() == True:
                 self.move_right()
-            elif self.compare_item() == 1 and self.can_move_right() == True:
-                self.move_right()
-            elif self.compare_item() == -1 and self.can_move_right() == True:
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+            while self.can_move_left() == True:
                 self.swap_item()
+                self.move_left()
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+
                 self.move_right()
-                self.set_light_on()
-            elif self.compare_item() == 0 and self.can_move_right() == False:
-                self.set_light_off()
-            elif self.can_move_right() == False and self.light_is_on() == True:
-                while self.can_move_left() == True:
-                    self.move_left()
-        else:
-            pass
+                self.swap_item()
+                self.move_left()
+            # if self.can_move_left() == False:
+            #     self.swap_item()
+            #     self.move_right()
+            # elif self.compare_item() == 1 and self.can_move_right() == True:
+            #     self.move_right()
+            # elif self.compare_item() == -1 and self.can_move_right() == True:
+            #     self.swap_item()
+            #     self.move_right()
+            #     self.set_light_on()
+            # elif self.compare_item() == 0 and self.can_move_right() == False:
+            #     self.set_light_off()
+            # elif self.can_move_right() == False and self.light_is_on() == True:
+            #     while self.can_move_left() == True:
+            #         self.move_left()
 
 
 if __name__ == "__main__":
